@@ -19,15 +19,16 @@ var errorLogger = createLogger({
     logGroupName: '/cloud-terminal/error-logs'      // Don't forget to create LogGroups: /api/errors or it will fail!
 });
 
-defaultLogger.log("os-reporter started...");
+defaultLogger.log("INFO", "os-reporter started...");
 console.log("loop started...");
-var loopCount = 3;
+var loopCount = 20;
 
 for(var i=0;i<loopCount;i++) {
     var output = "trade with id " + Number(i+1) + " booked";
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
     process.stdout.write(output);
+    defaultLogger.log("INFO", output);
     sleep(500);
 }
 process.stdout.write("\n");
